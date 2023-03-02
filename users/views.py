@@ -56,6 +56,7 @@ def account_activate_view(request,slug):
     user = get_object_or_404(User,slug=slug)
     form = ActivateForm()
     if request.method == 'POST':
+        
         form = ActivateForm(request.POST or None )
 
         if form.is_valid():
