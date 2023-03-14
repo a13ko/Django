@@ -50,16 +50,7 @@
                 <div class="col-12">
                     <div class="breadscrumb-contain">
                         <h2 class="mb-2">Log In</h2>
-                        <nav>
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item">
-                                    <a href="index.html">
-                                        <i class="fa-solid fa-house"></i>
-                                    </a>
-                                </li>
-                                <li class="breadcrumb-item active">Log In</li>
-                            </ol>
-                        </nav>
+                        
                     </div>
                 </div>
             </div>
@@ -114,11 +105,11 @@
 <!--                                                id="flexCheckDefault">-->
 <!--                                            <label class="form-check-label" for="flexCheckDefault">Remember me</label>-->
                                         </div>
-                                        <a href="forgot.html" class="forgot-password">Forgot Password?</a>
+                                        <a href="{% url 'users:reset' %}" class="forgot-password">Forgot Password?</a>
                                     </div>
                                 </div>
 
-                                <div class="col-12">
+                                <div class="col-12">  
                                     <button class="btn btn-animation w-100 justify-content-center" type="submit">Log
                                         In</button>
                                 </div>
@@ -152,7 +143,7 @@
 
                         <div class="sign-up-box">
                             <h4>Don't have an account?</h4>
-                            <a href="sign-up.html">Sign Up</a>
+                            <a href="{% url 'users:register' %}">Sign Up</a>
                         </div>
                     </div>
                 </div>

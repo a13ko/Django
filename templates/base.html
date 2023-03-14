@@ -185,14 +185,17 @@
                                 </div>
 
                                 <div class="search-box">
+                                    <form method="GET">
                                     <div class="input-group">
-                                        <input type="search" class="form-control" placeholder="I'm searching for..."
+                                        <input type="search" name="search" class="form-control" placeholder="I'm searching for..."
                                             aria-label="Recipient's username" aria-describedby="button-addon2">
                                         <button class="btn" type="button" id="button-addon2">
                                             <i data-feather="search"></i>
                                         </button>
                                     </div>
+                                </form>
                                 </div>
+                            
                             </div>
 
                             <div class="rightside-box">
@@ -229,7 +232,7 @@
                                         </a>
                                     </li>
                                     <li class="right-side">
-                                        <a href="wishlist.html" class="btn p-0 position-relative header-wishlist">
+                                        <a href="{% url 'products:wishlist' %}" class="btn p-0 position-relative header-wishlist">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </li>
@@ -290,7 +293,7 @@
                                                 </div>
 
                                                 <div class="button-group">
-                                                    <a href="cart.html" class="btn btn-sm cart-button">View Cart</a>
+                                                    <a href="{% url 'products:basket-list' %}" class="btn btn-sm cart-button">View Cart</a>
                                                     <a href="checkout.html" class="btn btn-sm cart-button theme-bg-color
                                                     text-white">Checkout</a>
                                                 </div>
@@ -1438,6 +1441,9 @@
 
     <!-- thme setting js -->
     <script src="{% static 'assets/js/theme-setting.js' %}"></script>
+
+    {% block js %}
+    {% endblock  %}
 </body>
 
 

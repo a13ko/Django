@@ -19,7 +19,7 @@ class Profile(DateMixin):
     slug = models.SlugField(unique=True, blank=True,null=True)
 
     def __str__(self):
-        return self.user.username
+        return self.user.email
 
     def save(self,*args, **kwargs):
         self.slug = CodeGenerator.create_slug_profile(size=10, model_=Profile)

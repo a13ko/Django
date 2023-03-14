@@ -1,0 +1,407 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+
+    <!-- Breadcrumb Section Start -->
+    <section class="breadscrumb-section pt-0">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadscrumb-contain">
+                        <h2>Shop Top Filter</h2>
+                        <nav>
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">
+                                        <i class="fa-solid fa-house"></i>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Shop Top Filter</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Shop Section Start -->
+    <section class="section-b-space shop-section">
+        {% csrf_token %}
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="show-button">
+                        <div class="top-filter-menu-2">
+                            <div class="sidebar-filter-menu" data-bs-toggle="collapse"
+                                data-bs-target="#collapseExample">
+                                <a href="javascript:void(0)"><i class="fa-solid fa-filter"></i> Filter Menu</a>
+                            </div>
+
+                            <div class="ms-auto d-flex align-items-center">
+                                <div class="category-dropdown me-md-3">
+                                    <h5 class="text-content">Sort By :</h5>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                            data-bs-toggle="dropdown">
+                                            <span>Most Popular</span> <i class="fa-solid fa-angle-down"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="dropdown-item" id="pop"
+                                                    href="javascript:void(0)">Popularity</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="low" href="javascript:void(0)">Low - High
+                                                    Price</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="high" href="javascript:void(0)">High - Low
+                                                    Price</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="rating" href="javascript:void(0)">Average
+                                                    Rating</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="aToz" href="javascript:void(0)">A - Z
+                                                    Order</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="zToa" href="javascript:void(0)">Z - A
+                                                    Order</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" id="off" href="javascript:void(0)">% Off -
+                                                    Hight To
+                                                    Low</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="grid-option grid-option-2">
+                                    <ul>
+                                        <li class="three-grid">
+                                            <a href="javascript:void(0)">
+                                                <img src={% static 'https://themes.pixelstrap.com/fastkart/ /svg/grid-3.svg' %} class="blur-up lazyload" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="grid-btn five-grid d-xxl-inline-block d-none">
+                                            <a href="javascript:void(0)">
+                                                <img src={% static 'https://themes.pixelstrap.com/fastkart/assets/svg/grid-4.svg' %}
+                                                    class="blur-up lazyload d-lg-inline-block d-none" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="five-grid d-xxl-inline-block d-none active">
+                                            <a href="javascript:void(0)">
+                                                <img src={% static 'https://themes.pixelstrap.com/fastkart/assets/svg/grid-5.svg' %}
+                                                    class="blur-up lazyload d-lg-inline-block d-none" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="list-btn">
+                                            <a href="javascript:void(0)">
+                                                <img src="https://themes.pixelstrap.com/fastkart/assets/svg/list.svg" class="blur-up lazyload" alt="">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="top-filter-category" id="collapseExample">
+                        <form method="GET">
+                        <div class="row g-sm-4 g-3">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="category-title">
+                                    <h3>Pack Size</h3>
+                                </div>
+                                <ul class="category-list custom-padding custom-height">
+                                    {% for category in categories %}
+                                    <li>
+                                        <div class="form-check ps-0 m-0 category-list-box">
+                                            <input class="checkbox_animated" type="checkbox" id="fruit" name="category" value="{{category.id}}">
+                                            <label class="form-check-label" for="fruit">
+                                                <span class="name">{{category.name}}</span>
+                                                <span class="number">{{category.product_count}}</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                    
+                                </ul>
+                            </div>
+
+                            <div class="col-xl-3 col-md-6">
+                                <div class="category-title">
+                                    <h3>Price</h3>
+                                </div>
+                                <div class="range-slider">
+                                    <input type="text" class="js-range-slider" value="" name="price">
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-md-6">
+                                <div class="category-title">
+                                    <h3>Discount</h3>
+                                </div>
+                                <ul class="category-list">
+                                    <li>
+                                        <div class="form-check ps-0 m-0 category-list-box">
+                                            <input class="checkbox_animated" type="checkbox" id="flexCheckDefault" name="discount" value="1">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                <span class="name">5% e qeder</span>
+                                                
+                                            </label>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="form-check ps-0 m-0 category-list-box">
+                                            <input class="checkbox_animated" type="checkbox" id="flexCheckDefault1" name="discount" value="2">
+                                            <label class="form-check-label" for="flexCheckDefault1">
+                                                <span class="name">5% - 10%</span>
+                                                <span class="number">(15)</span>
+                                            </label>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="form-check ps-0 m-0 category-list-box">
+                                            <input class="checkbox_animated" type="checkbox" id="flexCheckDefault2" name="discount" value="3">
+                                            <label class="form-check-label" for="flexCheckDefault2">
+                                                <span class="name">10% - 15%</span>
+                                                <span class="number">(15)</span>
+                                            </label>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="form-check ps-0 m-0 category-list-box">
+                                            <input class="checkbox_animated" type="checkbox" id="flexCheckDefault3" name="discount" value="4">
+                                            <label class="form-check-label" for="flexCheckDefault3">
+                                                <span class="name">15% - 25%</span>
+                                                <span class="number">(15)</span>
+                                            </label>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="form-check ps-0 m-0 category-list-box">
+                                            <input class="checkbox_animated" type="checkbox" id="flexCheckDefault4" name="discount" value="5">
+                                            <label class="form-check-label" for="flexCheckDefault4">
+                                                <span class="name">More than 25%</span>
+                                                <span class="number">(15)</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+                        
+                    </form>
+                    </div>
+
+                    <div
+                        class="row g-sm-4 g-3 row-cols-xxl-5 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section">
+                        
+                        {% for product in products %}
+                        <div>
+                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-daley="0.05s">
+                                <div class="product-header">
+                                    <div class="product-image">
+                                        <a href="product-left-thumbnail.html">
+                                            <img src="{{product.productimage_set.last.image.url}}"
+                                                class="img-fluid blur-up lazyload" alt="">
+                                        </a>
+
+                                        <ul class="product-option" style="text-align: center">
+
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                                <a onclick="getWish('{{product.id}}')" class="notifi-wishlist">
+                                                    <i data-feather="heart" id="product-heart-{{product.id}}"
+                                                    {% if request.user in product.wishlist.all %} style=color:red;
+                                                    {% else %} style=color:green;
+                                                    {% endif %}>
+                                                    </i>
+                                                </a>
+
+
+                                                <a onclick="getBasket('{{product.id}}')" class="notifi-wishlist" style="cursor: pointer;">
+                                                    Basket
+                                            </a>
+                                            </li>
+
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="product-footer">
+                                    <div class="product-detail">
+                                        <span class="span-name">{{ product.category.name }}</span>
+                                        <a href="product-left-thumbnail.html">
+                                            <h5 class="name">{{ product.name }}</h5>
+                                        </a>
+                                        <p class="text-content mt-1 mb-2 product-content">
+                                            {{ product.description|truncatechars:"100" }}
+                                        </p>
+                                        <div class="product-rating mt-2">
+                                            <ul class="rating">
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star" class="fill"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                                <li>
+                                                    <i data-feather="star"></i>
+                                                </li>
+                                            </ul>
+                                            <span>(2.4)</span>
+                                        </div>
+                                        {% if product.discount %}
+                                            <h5 class="price"><span class="theme-color">{{ product.total_price|floatformat:2 }} AZN</span> <del style="color: red;">{{ product.price|floatformat:2 }} AZN</del>
+                                        {% else %}
+                                            <h5 class="price"><span class="theme-color">{{ product.total_price|floatformat:2 }} AZN</span>
+                                        {% endif %}
+                                        </h5>
+                                        <div class="add-to-cart-box bg-white">
+                                            <button class="btn btn-add-cart addcart-button">Add
+                                                <span class="add-icon bg-light-gray">
+                                                    <i class="fa-solid fa-plus"></i>
+                                                </span>
+                                            </button>
+                                            <div class="cart_qty qty-box">
+                                                <div class="input-group bg-white">
+                                                    <button type="button" class="qty-left-minus bg-gray"
+                                                        data-type="minus" data-field="">
+                                                        <i class="fa fa-minus" aria-hidden="true"></i>
+                                                    </button>
+                                                    <input class="form-control input-number qty-input" type="text"
+                                                        name="quantity" value="0">
+                                                    <button type="button" class="qty-right-plus bg-gray"
+                                                        data-type="plus" data-field="">
+                                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+
+                    </div>
+                    {% if paginator.num_pages > 1 %}
+                    <nav class="custome-pagination">
+                        <ul class="pagination justify-content-center">
+                            {% if products.has_previous %}
+                            <li class="page-item ">
+                                <a class="page-link" href="?page={{products.previous_page_number}}&{% for val in filter_dict %}{{val}}{% endfor %}" tabindex="-1" aria-disabled="true">
+                                    <i class="fa-solid fa-angles-left"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                            
+                            {% for i in products.paginator.page_range  %}
+                            <li class="page-item {% if products.number == i %} active {% endif %}">
+                                <a class="page-link" href="?page={{i}}&{% for val in filter_dict %}{{val}}{% endfor %}">{{i}}</a>
+                            </li>
+                            {% endfor %}
+                           
+                            {% if products.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{products.next_page_number}}&{% for val in filter_dict %}{{val}}{% endfor %}">
+                                    <i class="fa-solid fa-angles-right"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Section End -->
+
+{% endblock %}
+
+{% block js %}
+<script>
+    const wish_url = "{% url 'products:wish' %}"
+    const basket_url = "{% url 'products:basket' %}"
+        
+
+        function getWish(id){
+            var myHeaders = new Headers()
+            myHeaders.append('X-CSRFToken', document.querySelector('[name=csrfmiddlewaretoken]').value)
+            var formData = new FormData()
+
+            formData.append('id', id)
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: formData,
+                redirect: 'follow',
+            };
+
+            response = fetch(wish_url, requestOptions)
+                .then(function (response) {
+
+                    if (response.ok) {
+                        response.json().then((data) => {
+                            if(data.success){
+                                $("#product-heart-"+id).css('color', 'red')
+                            }else{
+                                $("#product-heart-"+id).css('color', 'green')
+                            }
+                        })
+                    }
+                })
+        }
+
+
+        function getBasket(id){
+            var myHeaders = new Headers()
+            myHeaders.append('X-CSRFToken', document.querySelector('[name=csrfmiddlewaretoken]').value)
+            var formData = new FormData()
+
+            formData.append('id', id)
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: formData,
+                redirect: 'follow',
+            };
+
+            response = fetch(basket_url, requestOptions)
+                .then(function (response) {
+
+                    if (response.ok) {
+                        response.json().then((data) => {
+                           console.log(data)
+                        })
+                    }
+                })
+        }
+
+
+</script>
+
+{% endblock  %}

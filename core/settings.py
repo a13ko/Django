@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 
     # Apps
     'accounts',
@@ -36,7 +37,9 @@ INSTALLED_APPS = [
     # Third party apps
     'ckeditor',
     'phonenumber_field',
-    'mptt'
+    'mptt',
+    'rest_framework',
+    'django_filters',
 
 ]
 
@@ -148,3 +151,19 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_PORT = 465
 # EMAIL_USE_TLS = False
 # EMAIL_USE_SSL = True
+
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+#     'PAGE_SIZE': 2,
+
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ]
+# }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
